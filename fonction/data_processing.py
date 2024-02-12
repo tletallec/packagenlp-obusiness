@@ -119,7 +119,7 @@ def process():
                     with st.spinner("Clean Text in progress"):
                         cleaned_data = dataframe[selected_column].apply(lambda text: nlp.cleanText(text, keep_numbers, exception, remove_accent, lowercase))
                         st.session_state.cleaned_data = cleaned_data 
-                    st.success('Done!')
+                    st.success('Clean Text Done!')
                 else:
                     st.warning("La colonne sélectionnée ne contient pas de texte (chaînes de caractères). Veuillez sélectionner une colonne valide.")
             
@@ -128,8 +128,7 @@ def process():
                     with st.spinner("StopWords Removal in progress"):
                         cleaned_data = dataframe[selected_column].apply(lambda text: nlp.cleanStopWord(text, language, add_stopwords.split(","), remove_stopwords.split(",")))
                         st.session_state.cleaned_data = cleaned_data 
-                    st.success('Done!')
-                    print(language)
+                    st.success(' StopWords Done!')
                 else:
                     st.warning("Selected column does not contain text (strings). Please select a valid column.")
             
@@ -138,7 +137,7 @@ def process():
                     with st.spinner("Lemmatization in progress"):
                         cleaned_data = dataframe[selected_column].apply(lambda text: nlp.lemmatisation(text, lemma_exclu_dict, language, keep_numbers, exlu_type_word))
                         st.session_state.cleaned_data = cleaned_data  
-                    st.success('Done!')
+                    st.success('Lemmatization Done!')
                 else:
                     st.warning("Selected column does not contain text (strings). Please select a valid column.")
 
