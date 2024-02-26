@@ -136,7 +136,7 @@ def process():
             if apply_lemmatization:
                 if selected_column is not None and selected_column in dataframe.columns and dataframe[selected_column].apply(lambda x: isinstance(x, str)).all():
                     with st.spinner("Lemmatization in progress"):
-                        cleaned_data = dataframe[selected_column].apply(lambda text: nlp.lemmatisation(text, lemma_exclu_dict, language, keep_numbers, exlu_type_word))
+                        cleaned_data = dataframe[selected_column].apply(lambda text: nlp.lemmatisation(text, lemma_exclu_dict, language, keep_numbers, exlu_type_word, treetagger_dir='TreeTagger'))
                         st.session_state.cleaned_data = cleaned_data  
                     st.success('Lemmatization Done!')
                 else:
